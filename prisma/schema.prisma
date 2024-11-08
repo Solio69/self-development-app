@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int      @id @default(autoincrement()) // Уникальный идентификатор пользователя
+  username      String   @unique // Имя пользователя
+  email         String   @unique // Адрес электронной почты
+  password_hash String // Хэш пароля
+  created_at    DateTime @default(now()) // Дата и время регистрации
+  updated_at    DateTime @updatedAt // Дата и время последнего обновления профиля
+}
