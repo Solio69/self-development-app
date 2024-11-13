@@ -14,10 +14,10 @@ datasource db {
 }
 
 model User {
-  id            Int      @id @default(autoincrement()) // Уникальный идентификатор пользователя
-  username      String   @unique // Имя пользователя
-  email         String   @unique // Адрес электронной почты
-  password_hash String // Хэш пароля
-  created_at    DateTime @default(now()) // Дата и время регистрации
-  updated_at    DateTime @updatedAt // Дата и время последнего обновления профиля
+  id           Int      @id @default(autoincrement()) // Уникальный идентификатор пользователя
+  username     String   @unique @map("username") // Имя пользователя
+  email        String   @unique @map("email") // Адрес электронной почты
+  passwordHash String   @map("password_hash") // Хэш пароля
+  createdAt    DateTime @default(now()) @map("created_at") // Дата и время регистрации
+  updatedAt    DateTime @updatedAt @map("updated_at") // Дата и время последнего обновления профиля
 }
