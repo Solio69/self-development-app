@@ -14,4 +14,22 @@ model User {
   passwordHash String   @map("password_hash") // Хэш пароля
   createdAt    DateTime @default(now()) @map("created_at") // Дата и время регистрации
   updatedAt    DateTime @updatedAt @map("updated_at") // Дата и время последнего обновления профиля
+  Note         Note[]
+
+  @@map("users") // Сопоставление с таблицей `users`
+}
+
+model Note {
+  id         String   @id @default(uuid()) // Уникальный идентификатор записи (UUID)
+  userId     String   @map("user_id") // Внешний ключ, ссылающийся на `users.id`
+  title      String?  @map("title") // Заголовок записи, необязательное поле
+  text       String   @map("text") // Основной текст записи
+  createdAt  DateTime @default(now()) @map("created_at") // Дата и время создания записи
+  updatedAt  DateTime @updatedAt @map("updated_at") // Дата и время последнего обновления записи
+  isArchived Boolean  @default(false) @map("is_archived") // Логическое значение для архивирования записи
+
+  // Связь с таблицей `users`
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("notes") // Сопоставление с таблицей `notes`
 }
