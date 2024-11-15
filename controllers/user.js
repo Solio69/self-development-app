@@ -21,9 +21,6 @@ const login = async (req, res) => {
       where: { email },
     })
 
-    //TODO: удалить console
-    console.log(colors.blue.bold('login user', user))
-
     const isUserCorrect =
       user && (await bcrypt.compare(password, user.passwordHash))
     const secret = process.env.JWT_SECRET_KEY
@@ -75,9 +72,6 @@ const register = async (req, res) => {
     const user = await prisma.user.create({
       data: { email, username, passwordHash },
     })
-
-    //TODO: удалить console
-    console.log(colors.blue.bold('register user', user))
 
     const secret = process.env.JWT_SECRET_KEY
 
