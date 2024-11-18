@@ -6,7 +6,7 @@ const { ERROR_MESSAGES, TOKEN_EXPIRATION } = require('./constants')
 
 /**
  * @route POST /api/user/login
- * @desc Авторизация
+ * @desc Authorization
  * @access Public
  */
 const login = async (req, res) => {
@@ -45,7 +45,7 @@ const login = async (req, res) => {
 
 /**
  * @route POST /api/user/register
- * @desc Регистрация
+ * @desc Registration
  * @access Public
  */
 const register = async (req, res) => {
@@ -95,7 +95,7 @@ const register = async (req, res) => {
 
 /**
  * @route GET /api/user/current
- * @desc Получить текущего пользователя
+ * @desc Get current user
  * @access Private
  */
 const current = (req, res) => {
