@@ -2,15 +2,13 @@ const express = require('express')
 const colors = require('colors')
 const { auth } = require('../middleware/auth')
 const router = express.Router()
-const { getNotes } = require('../controllers/notes')
+const { getNotes, createNote } = require('../controllers/notes')
 
 // ./api/notes/
 router.get('/', auth, getNotes)
 
 // ./api/notes/
-router.post('/', auth, () => {
-  console.log(colors.red.bold('add'))
-})
+router.post('/', auth, createNote)
 
 // ./api/notes/:id
 router.get('/:id', auth, () => {
