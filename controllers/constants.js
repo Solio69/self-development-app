@@ -12,6 +12,8 @@ const ERROR_MESSAGES = {
 
   noteTextRequired: 'Note text is required',
   noteNotCreated: 'Note not created',
+  notesNotFound: 'Notes not found',
+  noteNotFound: 'Note not found',
 }
 
 const SUCCESS_MESSAGES = {

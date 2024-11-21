@@ -10,13 +10,13 @@ const { ERROR_MESSAGES, TOKEN_EXPIRATION } = require('./constants')
  * @access Public
  */
 const login = async (req, res) => {
+  const { email, password } = req.body
+
+  if (!email || !password) {
+    return res.status(400).json({ message: ERROR_MESSAGES.allFieldsRequired })
+  }
+
   try {
-    const { email, password } = req.body
-
-    if (!email || !password) {
-      return res.status(400).json({ message: ERROR_MESSAGES.allFieldsRequired })
-    }
-
     const user = await prisma.user.findFirst({
       where: { email },
     })
@@ -49,13 +49,13 @@ const login = async (req, res) => {
  * @access Public
  */
 const register = async (req, res) => {
+  const { email, username, password } = req.body
+
+  if (!email || !username || !password) {
+    return res.status(400).json({ message: ERROR_MESSAGES.allFieldsRequired })
+  }
+
   try {
-    const { email, username, password } = req.body
-
-    if (!email || !username || !password) {
-      return res.status(400).json({ message: ERROR_MESSAGES.allFieldsRequired })
-    }
-
     const registerUser = await prisma.user.findFirst({
       where: { email },
     })
