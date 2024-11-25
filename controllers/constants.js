@@ -15,6 +15,8 @@ const ERROR_MESSAGES = {
   notesNotFound: 'Notes not found',
   noteNotFound: 'Note not found',
   noteNotArchived: 'Note not archived',
+
+  trashError: 'Error getting trash items',
 }
 
 const SUCCESS_MESSAGES = {

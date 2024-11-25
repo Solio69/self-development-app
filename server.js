@@ -14,5 +14,6 @@ server.use(cookieParser())
 
 server.use('/api/user', require('./routes/users'))
 server.use('/api/notes', require('./routes/notes'))
+server.use('/api/trash', require('./routes/trash'))
 
 module.exports = server
