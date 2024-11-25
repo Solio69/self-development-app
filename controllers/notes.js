@@ -1,4 +1,3 @@
-const colors = require('colors')
 const { prisma } = require('../prisma/prisma-client')
 const { ERROR_MESSAGES } = require('./constants')
 
@@ -119,13 +118,44 @@ const createNote = async (req, res) => {
 }
 
 /**
- * @route POST /api/notes/
- * @desc Delete note
+ * @route PATCH /api/notes/:id
+ * @desc Archive note
  * @access Private
  */
+const toggleArchiveNote = async (req, res) => {
+  const {
+    user: { id: userId = null },
+    params: { id: noteId },
+  } = req
+
+  if (!userId) {
+    return res.status(401).json({ error: ERROR_MESSAGES.userNotFound })
+  }
+
+  try {
+    const note = await prisma.note.findUnique({
+      where: { id: noteId },
+    })
+
+    if (!note || note.userId !== userId) {
+      return res.status(404).json({ error: ERROR_MESSAGES.noteNotFound })
+    }
+
+    const updatedNote = await prisma.note.update({
+      where: { id: noteId },
+      data: { isArchived: !note.isArchived },
+    })
+
+    res.status(200).json(updatedNote)
+  } catch (error) {
+    console.error(ERROR_MESSAGES.noteNotArchived, error)
+    res.status(500).json({ error: ERROR_MESSAGES.serverError })
+  }
+}
 
 module.exports = {
   getNotes,
   getNote,
   createNote,
+  toggleArchiveNote,
 }

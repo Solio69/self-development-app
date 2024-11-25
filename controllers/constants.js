@@ -14,6 +14,7 @@ const ERROR_MESSAGES = {
   noteNotCreated: 'Note not created',
   notesNotFound: 'Notes not found',
   noteNotFound: 'Note not found',
+  noteNotArchived: 'Note not archived',
 }
 
 const SUCCESS_MESSAGES = {
