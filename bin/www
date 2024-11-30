@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-var app = require('../app')
+var server = require('../server')
 var debug = require('debug')('self-development-app:server')
 var http = require('http')
 const colors = require('colors')
@@ -13,13 +13,13 @@ const colors = require('colors')
  */
 
 var port = normalizePort(process.env.PORT || '3000')
-app.set('port', port)
+server.set('port', port)
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app)
+var server = http.createServer(server)
 
 /**
  * Listen on provided port, on all network interfaces.

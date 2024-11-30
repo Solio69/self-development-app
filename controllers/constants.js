@@ -1,18 +1,28 @@
 const TOKEN_EXPIRATION = '30d'
 
 const ERROR_MESSAGES = {
-  ALL_FIELDS_REQUIRED: 'All fields are required',
-  INVALID_CREDENTIALS: 'Invalid credentials',
-  USER_NOT_FOUND: 'User not found',
-  USER_ALREADY_EXISTS: 'User already exists',
-  INVALID_DATA: 'Invalid data',
-  SERVER_ERROR: 'Server error. Please try again later.',
-  REGISTRATION_ERROR: 'Error during registration:',
+  allFieldsRequired: 'All fields are required',
+  invalidCredentials: 'Invalid credentials',
+  // userNotFound: 'User not found', //TODO: возможно не понадобится
+  userAlreadyExists: 'User already exists',
+  invalidData: 'Invalid data',
+  serverError: 'Server error. Please try again later.',
+  registrationError: 'Error during registration:',
+  loginError: 'Error during login:',
+
+  noteTextRequired: 'Note text is required',
+  noteNotCreated: 'Note not created',
+  notesNotFound: 'Notes not found',
+  noteNotFound: 'Note not found',
+  noteNotArchived: 'Note not archived',
+  noteNotUpdated: 'Note not updated',
+
+  trashError: 'Error getting trash items',
 }
 
 const SUCCESS_MESSAGES = {
-  USER_REGISTERED: 'User registered successfully',
-  USER_LOGGED_IN: 'User logged in successfully',
+  userRegistered: 'User registered successfully',
+  userLoggedIn: 'User logged in successfully',
 }
 
 module.exports = {
