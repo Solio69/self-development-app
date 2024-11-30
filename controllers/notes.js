@@ -178,10 +178,39 @@ const toggleArchiveNote = async (req, res) => {
   }
 }
 
+/**
+ * @route DELETE /api/notes/:id
+ * @desc Delete note
+ * @access Private
+ */
+const deleteNote = async (req, res) => {
+  const {
+    user: { id: userId = null },
+    params: { id: noteId },
+  } = req
+
+  try {
+    const note = await prisma.note.findUnique({
+      where: { id: noteId },
+    })
+
+    if (!note || note.userId !== userId) {
+      return res.status(404).json({ error: ERROR_MESSAGES.noteNotFound })
+    }
+
+    const deletedNote = await prisma.note.delete({
+      where: { id: noteId },
+    })
+
+    res.status(200).json(deletedNote)
+  } catch (error) {}
+}
+
 module.exports = {
   getNotes,
   getNote,
   createNote,
   toggleArchiveNote,
   updateNote,
+  deleteNote,
 }
