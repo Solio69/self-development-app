@@ -9,10 +9,6 @@ const { ERROR_MESSAGES } = require('./constants')
 const getTrash = async (req, res) => {
   const { id: userId } = req.user
 
-  if (!userId) {
-    return res.status(401).json({ error: ERROR_MESSAGES.userNotFound })
-  }
-
   try {
     //TODO: Добавить новые таблицы по которым надо получать удаленные сущности (например ['note', 'task'])
     const [notes] = await Promise.all([

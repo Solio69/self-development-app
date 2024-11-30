@@ -7,6 +7,7 @@ const {
   getNote,
   createNote,
   toggleArchiveNote,
+  updateNote,
 } = require('../controllers/notes')
 
 // ./api/notes/
@@ -21,10 +22,8 @@ router.post('/', auth, createNote)
 // PATCH /api/notes/:id
 router.patch('/:id', auth, toggleArchiveNote)
 
-// ./api/notes/:id
-router.put('/:id', auth, () => {
-  console.log(colors.red.bold('update'))
-})
+// PUT /api/notes/:id
+router.put('/:id', auth, updateNote)
 
 // ./api/notes/:id
 router.delete('/:id', auth, () => {

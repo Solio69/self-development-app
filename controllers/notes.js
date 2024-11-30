@@ -11,10 +11,6 @@ const getNotes = async (req, res) => {
     user: { id: userId = null },
   } = req
 
-  if (!userId) {
-    return res.status(401).json({ error: ERROR_MESSAGES.userNotFound })
-  }
-
   try {
     const notes = await prisma.note.findMany({
       where: {
@@ -51,10 +47,6 @@ const getNote = async (req, res) => {
     user: { id: userId = null },
     params: { id: noteId },
   } = req
-
-  if (!userId) {
-    return res.status(401).json({ error: ERROR_MESSAGES.userNotFound })
-  }
 
   try {
     const note = await prisma.note.findFirst({
@@ -118,6 +110,43 @@ const createNote = async (req, res) => {
 }
 
 /**
+ * @route PUT /api/notes/:id
+ * @desc Update note
+ * @access Private
+ */
+const updateNote = async (req, res) => {
+  const {
+    user: { id: userId = null },
+    params: { id: noteId },
+    body: { title = null, text = null },
+  } = req
+
+  if (!text) {
+    return res.status(400).json({ error: ERROR_MESSAGES.noteTextRequired })
+  }
+
+  try {
+    const note = await prisma.note.findUnique({
+      where: { id: noteId },
+    })
+
+    if (!note || note.userId !== userId) {
+      return res.status(404).json({ error: ERROR_MESSAGES.noteNotFound })
+    }
+
+    const updatedNote = await prisma.note.update({
+      where: { id: noteId },
+      data: { title, text },
+    })
+
+    res.status(200).json(updatedNote)
+  } catch (error) {
+    console.error(ERROR_MESSAGES.noteNotUpdated, error)
+    res.status(500).json({ error: ERROR_MESSAGES.serverError })
+  }
+}
+
+/**
  * @route PATCH /api/notes/:id
  * @desc Archive note
  * @access Private
@@ -127,10 +156,6 @@ const toggleArchiveNote = async (req, res) => {
     user: { id: userId = null },
     params: { id: noteId },
   } = req
-
-  if (!userId) {
-    return res.status(401).json({ error: ERROR_MESSAGES.userNotFound })
-  }
 
   try {
     const note = await prisma.note.findUnique({
@@ -158,4 +183,5 @@ module.exports = {
   getNote,
   createNote,
   toggleArchiveNote,
+  updateNote,
 }

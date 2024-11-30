@@ -3,7 +3,7 @@ const TOKEN_EXPIRATION = '30d'
 const ERROR_MESSAGES = {
   allFieldsRequired: 'All fields are required',
   invalidCredentials: 'Invalid credentials',
-  userNotFound: 'User not found',
+  // userNotFound: 'User not found', //TODO: возможно не понадобится
   userAlreadyExists: 'User already exists',
   invalidData: 'Invalid data',
   serverError: 'Server error. Please try again later.',
@@ -15,6 +15,7 @@ const ERROR_MESSAGES = {
   notesNotFound: 'Notes not found',
   noteNotFound: 'Note not found',
   noteNotArchived: 'Note not archived',
+  noteNotUpdated: 'Note not updated',
 
   trashError: 'Error getting trash items',
 }
