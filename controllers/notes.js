@@ -3,15 +3,32 @@ const { ERROR_MESSAGES } = require('./constants')
 
 /**
  * @route GET /api/notes/
- * @desc Get all active notes
+ * @desc Get all active notes with pagination
  * @access Private
  */
 const getNotes = async (req, res) => {
   const {
     user: { id: userId = null },
+    query: { page = 1, limit = 10 },
   } = req
 
+  // Преобразование строковых параметров в числа
+  const pageNumber = parseInt(page, 10) || 1
+  const limitNumber = parseInt(limit, 10) || 10
+
+  // Проверка на валидные значения
+  if (pageNumber < 1 || limitNumber < 1) {
+    return res.status(400).json({ error: 'Неверные параметры пагинации.' })
+  }
+
   try {
+    const totalNotes = await prisma.note.count({
+      where: {
+        userId,
+        isArchived: false,
+      },
+    })
+
     const notes = await prisma.note.findMany({
       where: {
         userId,
@@ -28,9 +45,17 @@ const getNotes = async (req, res) => {
       orderBy: {
         createdAt: 'desc',
       },
+      skip: (pageNumber - 1) * limitNumber,
+      take: limitNumber,
     })
 
-    res.status(200).json(notes)
+    res.status(200).json({
+      totalNotes,
+      page: pageNumber,
+      limit: limitNumber,
+      totalPages: Math.ceil(totalNotes / limitNumber),
+      notes,
+    })
   } catch (error) {
     console.error(ERROR_MESSAGES.notesNotFound, error)
     res.status(500).json({ error: ERROR_MESSAGES.serverError })

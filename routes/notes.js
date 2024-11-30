@@ -11,7 +11,7 @@ const {
   deleteNote,
 } = require('../controllers/notes')
 
-// GET /api/notes/
+// GET /api/notes/?page={number}&limit={number}
 router.get('/', auth, getNotes)
 
 // GET /api/notes/:id
