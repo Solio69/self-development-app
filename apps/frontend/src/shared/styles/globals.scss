@@ -1,0 +1,10 @@
+@import './reset.scss';
+@import './variables.scss';
+@import './mixins.scss';
+@import '../assets/fonts/index.scss';
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: $green-100;
+  color: $gray-100;
+}
