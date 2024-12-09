@@ -1,7 +1,7 @@
 import { PATHS } from './routes/router'
 import HomePage from '../pages/home-page/HomePage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import '../shared/styles/globals.scss'
+import './styles/globals.scss'
 
 function App() {
   return (
