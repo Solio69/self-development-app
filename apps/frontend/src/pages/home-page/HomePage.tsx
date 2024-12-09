@@ -50,7 +50,7 @@ const HomePage = () => {
                 className: 'layout-menu-item',
                 icon: (
                   <BookOutlined
-                    style={{ fontSize: '20px', color: '#a0d911' }}
+                    style={{ fontSize: '20px', color: '#fa8c16' }}
                   />
                 ),
                 label: <Link to={PATHS.notes}>{MENU_ITEMS_LABEL.notes}</Link>,
@@ -60,7 +60,7 @@ const HomePage = () => {
                 className: 'layout-menu-item',
                 icon: (
                   <CheckCircleTwoTone
-                    twoToneColor="#fa8c16"
+                    twoToneColor="#a0d911"
                     style={{ fontSize: '20px' }}
                   />
                 ),
