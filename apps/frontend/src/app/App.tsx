@@ -1,28 +1,22 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { PATHS } from './routes/router'
+import HomePage from '../pages/home-page/HomePage'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import '../shared/styles/globals.scss'
 
-const router = createBrowserRouter([
-  {
-    path: PATHS.home,
-    element: <div>Hello world!</div>,
-  },
-  {
-    path: PATHS.login,
-    element: <div>Login</div>,
-  },
-  {
-    path: PATHS.register,
-    element: <div>Register</div>,
-  },
-  {
-    path: PATHS.profile,
-    element: <div>Profile</div>,
-  },
-])
-
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <Router>
+      <Routes>
+        <Route path={PATHS.login} element={<div>login</div>} />
+        <Route path={PATHS.register} element={<div>register</div>} />
+        <Route path="/" element={<HomePage />}>
+          <Route path={PATHS.notes} element={<div>notes</div>} />
+          <Route path={PATHS.daySummary} element={<div>daySummary</div>} />
+          <Route path={PATHS.trash} element={<div>trash</div>} />
+        </Route>
+      </Routes>
+    </Router>
+  )
 }
 
 export default App

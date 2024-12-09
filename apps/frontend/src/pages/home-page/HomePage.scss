@@ -1,0 +1,23 @@
+.home-page {
+  .layout {
+    font-size: 18px;
+    height: 100vh;
+    width: 100%;
+
+    &-sider {
+      width: 400px;
+    }
+
+    &-collapsed {
+      padding: 12px 0 0 24px;
+    }
+
+    &-menu {
+      font-size: 18px;
+
+      &-item {
+        margin: 8px 0 0 0 !important;
+      }
+    }
+  }
+}
