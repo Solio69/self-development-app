@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import {
   BookOutlined as NoteIcon,
   CheckCircleTwoTone as DaySummaryIcon,
@@ -16,6 +16,8 @@ import './HomePage.scss'
 const { Sider, Content } = Layout
 
 const HomePage = () => {
+  const location = useLocation()
+
   const [collapsed, setCollapsed] = useState(false)
 
   return (
@@ -48,11 +50,11 @@ const HomePage = () => {
           </div>
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
+            selectedKeys={[location.pathname]}
             className="layout-menu"
             items={[
               {
-                key: '1',
+                key: PATHS.notes,
                 className: 'layout-menu-item',
                 icon: (
                   <NoteIcon style={{ fontSize: '20px', color: '#fa8c16' }} />
@@ -60,7 +62,7 @@ const HomePage = () => {
                 label: <Link to={PATHS.notes}>{MENU_ITEMS_LABEL.notes}</Link>,
               },
               {
-                key: '2',
+                key: PATHS.daySummary,
                 className: 'layout-menu-item',
                 icon: (
                   <DaySummaryIcon
@@ -75,7 +77,7 @@ const HomePage = () => {
                 ),
               },
               {
-                key: '3',
+                key: PATHS.trash,
                 className: 'layout-menu-item',
                 icon: (
                   <TrashIcon style={{ fontSize: '20px', color: '#f5222d' }} />
