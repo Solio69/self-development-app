@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import {
-  BookOutlined,
-  CheckCircleTwoTone,
-  DeleteOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  BookOutlined as NoteIcon,
+  CheckCircleTwoTone as DaySummaryIcon,
+  DeleteOutlined as TrashIcon,
+  MenuFoldOutlined as MenuFoldOutlinedIcon,
+  MenuUnfoldOutlined as MenuUnfoldOutlinedIcon,
+  UserOutlined as UserPickIcon,
 } from '@ant-design/icons'
 import { Button, Layout, Menu } from 'antd'
 import { PATHS } from '../../app/routes/router'
@@ -32,13 +33,18 @@ const HomePage = () => {
               type="text"
               icon={
                 collapsed ? (
-                  <MenuUnfoldOutlined style={{ fontSize: '30px' }} />
+                  <MenuUnfoldOutlinedIcon style={{ fontSize: '30px' }} />
                 ) : (
-                  <MenuFoldOutlined style={{ fontSize: '30px' }} />
+                  <MenuFoldOutlinedIcon style={{ fontSize: '30px' }} />
                 )
               }
               onClick={() => setCollapsed(!collapsed)}
             />
+            {!collapsed && (
+              <Link to={PATHS.profile}>
+                <UserPickIcon style={{ fontSize: '30px', cursor: 'pointer' }} />
+              </Link>
+            )}
           </div>
           <Menu
             mode="inline"
@@ -49,9 +55,7 @@ const HomePage = () => {
                 key: '1',
                 className: 'layout-menu-item',
                 icon: (
-                  <BookOutlined
-                    style={{ fontSize: '20px', color: '#fa8c16' }}
-                  />
+                  <NoteIcon style={{ fontSize: '20px', color: '#fa8c16' }} />
                 ),
                 label: <Link to={PATHS.notes}>{MENU_ITEMS_LABEL.notes}</Link>,
               },
@@ -59,7 +63,7 @@ const HomePage = () => {
                 key: '2',
                 className: 'layout-menu-item',
                 icon: (
-                  <CheckCircleTwoTone
+                  <DaySummaryIcon
                     twoToneColor="#a0d911"
                     style={{ fontSize: '20px' }}
                   />
@@ -74,9 +78,7 @@ const HomePage = () => {
                 key: '3',
                 className: 'layout-menu-item',
                 icon: (
-                  <DeleteOutlined
-                    style={{ fontSize: '20px', color: '#f5222d' }}
-                  />
+                  <TrashIcon style={{ fontSize: '20px', color: '#f5222d' }} />
                 ),
                 label: <Link to={PATHS.trash}>{MENU_ITEMS_LABEL.trash}</Link>,
               },

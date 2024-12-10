@@ -9,7 +9,10 @@
     }
 
     &-collapsed {
-      padding: 12px 0 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px 0 24px;
     }
 
     &-menu {

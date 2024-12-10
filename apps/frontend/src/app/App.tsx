@@ -13,6 +13,7 @@ function App() {
           <Route path={PATHS.notes} element={<div>notes</div>} />
           <Route path={PATHS.daySummary} element={<div>daySummary</div>} />
           <Route path={PATHS.trash} element={<div>trash</div>} />
+          <Route path={PATHS.profile} element={<div>profile</div>} />
         </Route>
       </Routes>
     </Router>
