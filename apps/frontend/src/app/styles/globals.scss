@@ -4,7 +4,6 @@
 @import '../../shared/assets/fonts/index.scss';
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: $geekblue-1;
-  color: $gray-12;
+  background-color: $bg-main;
+  color: $fn-color-main;
 }
