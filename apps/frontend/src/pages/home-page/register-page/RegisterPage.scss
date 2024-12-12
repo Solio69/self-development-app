@@ -1,4 +1,4 @@
-.login-page {
+.register-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,14 +10,12 @@
     &-item {
       margin-bottom: 30px;
 
-      &:nth-last-child(2) {
-        margin-bottom: 0;
+      label {
+        font-size: 18px !important;
       }
 
-      &--link {
-        display: block;
-        margin-top: 16px;
-        font-size: 18px;
+      &:last-child {
+        margin-bottom: 0;
       }
     }
   }

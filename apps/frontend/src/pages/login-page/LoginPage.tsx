@@ -15,19 +15,17 @@ const LoginPage = () => {
       <Form
         name="login"
         size="large"
-        initialValues={{ remember: true }}
-        style={{ width: 360 }}
         onFinish={onFinish}
         className="login-page__form"
       >
         <Form.Item
-          name="username"
+          name="email"
           className="login-page__form-item"
           rules={[
-            { required: true, message: 'Логин обязетлен для заполнения!' },
+            { required: true, message: 'Email обязетлен для заполнения!' },
           ]}
         >
-          <Input prefix={<UserOutlined />} placeholder="Username" />
+          <Input prefix={<UserOutlined />} placeholder="Email" />
         </Form.Item>
         <Form.Item
           className="login-page__form-item"
