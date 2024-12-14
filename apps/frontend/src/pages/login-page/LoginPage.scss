@@ -1,11 +1,25 @@
+@import '../../shared/styles/variables.scss';
+
 .login-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 
+  &__content {
+    width: 430px;
+    padding: 16px;
+  }
+
+  &__title {
+    margin-bottom: 30px;
+    text-align: left;
+    width: 100%;
+  }
+
   &__form {
-    width: 400px;
+    width: 100%;
 
     &-item {
       margin-bottom: 30px;
@@ -14,10 +28,20 @@
         margin-bottom: 0;
       }
 
-      &--link {
-        display: block;
+      &-link {
+        display: flex;
         margin-top: 16px;
-        font-size: 18px;
+        font-size: 16px;
+
+        span {
+          display: block;
+          margin-right: 8px;
+        }
+
+        a {
+          font-weight: 600;
+          color: $blue-6;
+        }
       }
     }
   }
