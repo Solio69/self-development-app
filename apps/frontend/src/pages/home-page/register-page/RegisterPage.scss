@@ -1,0 +1,22 @@
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__form {
+    width: 400px;
+
+    &-item {
+      margin-bottom: 30px;
+
+      label {
+        font-size: 18px !important;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

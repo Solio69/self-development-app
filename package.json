@@ -6,9 +6,9 @@
     "apps/*"
   ],
   "scripts": {
-    "start": "yarn workspace self-development-app-backend start",
-    "start:backend": "yarn workspace self-development-app-backend start",
-    "server:backend": "yarn workspace self-development-app-backend server"
+    "server:backend": "yarn workspace self-development-app-backend server",
+    "start:frontend": "yarn workspace self-development-app-frontend start",
+    "dev": "concurrently \"yarn server:backend\" \"yarn start:frontend\""
   },
   "devDependencies": {
     "concurrently": "^9.1.0",
