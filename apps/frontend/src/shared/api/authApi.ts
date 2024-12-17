@@ -1,4 +1,4 @@
-import { api } from './baseApi'
+import { api } from './api'
 import { User } from '@prisma/client'
 
 export type UserData = Omit<User, 'id'>

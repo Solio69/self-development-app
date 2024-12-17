@@ -12,13 +12,7 @@ const RegisterPage = () => {
     <div className="register-page">
       <section className="register-page__content">
         <h1 className="register-page__title">Зарегистрироваться</h1>
-        <Form
-          size="large"
-          layout="vertical"
-          className="register-page__form"
-          name="register"
-          onFinish={onFinish}
-        >
+        <Form size="large" layout="vertical" className="register-page__form" name="register" onFinish={onFinish}>
           <Form.Item
             name="nickname"
             tooltip="Имя которое будет использоваться в приложении"

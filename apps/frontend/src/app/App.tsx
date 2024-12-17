@@ -1,13 +1,8 @@
 import { PATHS } from './routes/router'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom'
-import HomePage from '../pages/home-page/HomePage'
-import LoginPage from '../pages/login-page/LoginPage'
-import RegisterPage from '../pages/register-page/RegisterPage'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import HomePage from '@/pages/home-page'
+import LoginPage from '@/pages/login-page'
+import RegisterPage from '@/pages/register-page'
 import './styles/globals.scss'
 
 function App() {
