@@ -1,5 +1,9 @@
 {
   "name": "self-development-app",
+  "author": {
+    "name": "Anastasiya Kazanina",
+    "email": "akazanina@gmail.com"
+  },
   "private": true,
   "version": "1.0.0",
   "workspaces": [
