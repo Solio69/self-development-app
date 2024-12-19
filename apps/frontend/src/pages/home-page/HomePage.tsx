@@ -9,7 +9,7 @@ import {
   UserOutlined as UserPickIcon,
 } from '@ant-design/icons'
 import { Button, Layout, Menu } from 'antd'
-import { PATHS } from '../../app/routes/router'
+import { PATHS } from '@/app/routes/router'
 import { MENU_ITEMS_LABEL } from './constants'
 import './HomePage.scss'
 
@@ -23,22 +23,22 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <Layout className="layout">
-        <Sider theme="light" trigger={null} width={380} collapsible collapsed={collapsed}>
+        <Sider theme="light" trigger={null} width={320} collapsible collapsed={collapsed}>
           <div className="layout-collapsed">
             <Button
               type="text"
               icon={
                 collapsed ? (
-                  <MenuUnfoldOutlinedIcon style={{ fontSize: '30px' }} />
+                  <MenuUnfoldOutlinedIcon style={{ fontSize: '24px' }} />
                 ) : (
-                  <MenuFoldOutlinedIcon style={{ fontSize: '30px' }} />
+                  <MenuFoldOutlinedIcon style={{ fontSize: '24px' }} />
                 )
               }
               onClick={() => setCollapsed(!collapsed)}
             />
             {!collapsed && (
               <Link to={PATHS.profile}>
-                <UserPickIcon style={{ fontSize: '30px', cursor: 'pointer' }} />
+                <UserPickIcon style={{ fontSize: '24px', cursor: 'pointer' }} />
               </Link>
             )}
           </div>
@@ -50,19 +50,19 @@ const HomePage = () => {
               {
                 key: PATHS.notes,
                 className: 'layout-menu-item',
-                icon: <NoteIcon style={{ fontSize: '20px', color: '#fa8c16' }} />,
+                icon: <NoteIcon style={{ fontSize: '16px', color: '#fa8c16' }} />,
                 label: <Link to={PATHS.notes}>{MENU_ITEMS_LABEL.notes}</Link>,
               },
               {
                 key: PATHS.daySummary,
                 className: 'layout-menu-item',
-                icon: <DaySummaryIcon twoToneColor="#a0d911" style={{ fontSize: '20px' }} />,
+                icon: <DaySummaryIcon twoToneColor="#a0d911" style={{ fontSize: '16px' }} />,
                 label: <Link to={PATHS.daySummary}>{MENU_ITEMS_LABEL.daySummary}</Link>,
               },
               {
                 key: PATHS.trash,
                 className: 'layout-menu-item',
-                icon: <TrashIcon style={{ fontSize: '20px', color: '#f5222d' }} />,
+                icon: <TrashIcon style={{ fontSize: '16px', color: '#f5222d' }} />,
                 label: <Link to={PATHS.trash}>{MENU_ITEMS_LABEL.trash}</Link>,
               },
             ]}

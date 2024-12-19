@@ -1,56 +1,39 @@
-import { LockOutlined, UserOutlined } from '@ant-design/icons'
-import { Button, Form, Input } from 'antd'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { PATHS } from '../../app/routes/router'
+import { useLoginMutation } from '@/shared/api'
+import LoginForm from '@/features/auth/ui/login-form/LoginForm'
+import ErrorFormMessage from '@/shared/ui/error-form-message/ErrorFormMessage'
+import { PATHS } from '@/app/routes/router'
+import { isErrorMessage } from '@/shared/lib/isErrorWithMessage'
+import { UNKNOWN_ERROR } from '@/shared/consts/errors'
 import './LoginPage.scss'
 
 const LoginPage = () => {
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values)
+  const [loginUser, loginUserResult] = useLoginMutation()
+  const [error, setError] = useState('')
+
+  const login = async (values: any) => {
+    try {
+      await loginUser(values).unwrap()
+    } catch (e) {
+      console.log(e)
+      const maybeError = isErrorMessage(e)
+      setError(maybeError ? e.data.message : UNKNOWN_ERROR)
+    }
   }
 
   return (
     <div className="login-page">
       <section className="login-page__content">
-        <h1 className="register-page__title">Войти</h1>
-        <Form
-          name="login"
-          size="large"
-          onFinish={onFinish}
-          className="login-page__form"
-        >
-          <Form.Item
-            name="email"
-            className="login-page__form-item"
-            rules={[
-              { required: true, message: 'Email обязетлен для заполнения!' },
-            ]}
-          >
-            <Input prefix={<UserOutlined />} placeholder="Email" />
-          </Form.Item>
-          <Form.Item
-            className="login-page__form-item"
-            name="password"
-            rules={[
-              { required: true, message: 'Пароль обязетлен для заполнения!' },
-            ]}
-          >
-            <Input
-              prefix={<LockOutlined />}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Item>
-          <Form.Item className="login-page__form-item">
-            <Button block type="primary" htmlType="submit">
-              Войти
-            </Button>
-          </Form.Item>
-          <div className={'login-page__form-item-link'}>
-            <span>Еще не зарегистрированы?</span>
-            <Link to={PATHS.register}>Зарегистрироваться</Link>
-          </div>
-        </Form>
+        <h1 className="login-page__title">Войти</h1>
+        <LoginForm login={login} onFormChange={() => setError('')} />
+        <div className="login-page__error">
+          <ErrorFormMessage message={error} />
+        </div>
+        <div className={'login-page__link'}>
+          <span>Еще не зарегистрированы?</span>
+          <Link to={PATHS.register}>Зарегистрироваться</Link>
+        </div>
       </section>
     </div>
   )
