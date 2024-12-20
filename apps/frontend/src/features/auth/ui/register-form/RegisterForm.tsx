@@ -1,12 +1,16 @@
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, Spin } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons'
 import './RegisterForm.scss'
 
 interface IProps {
   register: (values: any) => void
   onFormChange: (values: any) => void
+  isLoading: boolean
 }
 
-const RegisterForm = ({ register, onFormChange }: IProps) => {
+const RegisterForm = ({ register, onFormChange, isLoading }: IProps) => {
+  const roundLoader = <LoadingOutlined style={{ fontSize: 20 }} spin />
+
   return (
     <Form
       size="large"
@@ -86,8 +90,8 @@ const RegisterForm = ({ register, onFormChange }: IProps) => {
         <Input.Password placeholder="Подтвердите пароль" />
       </Form.Item>
       <Form.Item className="register-form__item">
-        <Button block type="primary" htmlType="submit">
-          Зарегистрироваться
+        <Button block type="primary" htmlType="submit" disabled={isLoading}>
+          {isLoading ? <Spin indicator={roundLoader} className="login-form__button-spin" /> : 'Зарегистрироваться'}
         </Button>
       </Form.Item>
     </Form>

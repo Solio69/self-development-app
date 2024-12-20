@@ -16,7 +16,7 @@ const RegisterPage = () => {
     <div className="register-page">
       <section className="register-page__content">
         <h1 className="register-page__title">Зарегистрироваться</h1>
-        <RegisterForm register={onFinish} onFormChange={() => setError('')} />
+        <RegisterForm register={onFinish} onFormChange={() => setError('')} isLoading={false} />
         <div className="register-page__error">
           <ErrorFormMessage message={error} />
         </div>
