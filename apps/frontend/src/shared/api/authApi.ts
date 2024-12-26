@@ -13,6 +13,7 @@ export const authApi = api.injectEndpoints({
         body: userData,
       }),
     }),
+
     register: build.mutation<ResponseLoginData, UserData>({
       query: (userData) => ({
         url: '/user/register',
@@ -20,6 +21,7 @@ export const authApi = api.injectEndpoints({
         body: userData,
       }),
     }),
+
     current: build.query<ResponseLoginData, void>({
       query: () => ({
         url: '/user/current',
