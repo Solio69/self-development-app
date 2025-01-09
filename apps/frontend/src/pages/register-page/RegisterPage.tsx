@@ -15,6 +15,7 @@ const RegisterPage = () => {
   const [error, setError] = useState('')
 
   const register = async (values: any) => {
+    //TODO: add typing values
     try {
       setError('')
       await registerUser(values).unwrap()
