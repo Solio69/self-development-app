@@ -1,4 +1,7 @@
 import { useCurrentQuery } from '@/shared/api'
+import { useNavigate } from 'react-router-dom'
+import { PATHS } from '../routes/router'
+import MainLoader from '@/shared/ui/main-loader/MainLoader'
 
 interface IProps {
   children: JSX.Element
@@ -6,10 +9,11 @@ interface IProps {
 
 const AuthChecker = ({ children }: IProps) => {
   const { isLoading, error } = useCurrentQuery()
+  const navigate = useNavigate()
 
-  //TODO: add loader and error
-  if (isLoading) return <div>loading</div>
-  if (error) return <div>error</div>
+  if (isLoading) return <MainLoader />
+
+  if (error) navigate(PATHS.login)
 
   return children
 }

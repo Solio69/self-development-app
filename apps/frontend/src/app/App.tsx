@@ -4,9 +4,12 @@ import AuthChecker from './providers/AuthChecker'
 import HomePage from '@/pages/home-page'
 import LoginPage from '@/pages/login-page'
 import RegisterPage from '@/pages/register-page'
+import { useCurrentQuery } from '@/shared/api'
 import './styles/globals.scss'
 
 function App() {
+  const { error } = useCurrentQuery()
+
   return (
     <Router>
       <Routes>
@@ -20,7 +23,7 @@ function App() {
             </AuthChecker>
           }
         >
-          <Route index element={<Navigate to={PATHS.notes} replace />} />
+          <Route index element={!error && <Navigate to={PATHS.notes} replace />} />
           <Route path={PATHS.notes} element={<div>notes</div>} />
           <Route path={PATHS.daySummary} element={<div>daySummary</div>} />
           <Route path={PATHS.trash} element={<div>trash</div>} />
