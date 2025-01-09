@@ -12,7 +12,6 @@ const LoginPage = () => {
   const navigate = useNavigate()
 
   const [loginUser, loginUserResult] = useLoginMutation()
-
   const [error, setError] = useState('')
 
   const login = async (values: any) => {

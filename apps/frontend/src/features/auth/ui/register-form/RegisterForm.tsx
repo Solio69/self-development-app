@@ -21,7 +21,7 @@ const RegisterForm = ({ register, onFormChange, isLoading }: IProps) => {
       onChange={onFormChange}
     >
       <Form.Item
-        name="nickname"
+        name="username"
         tooltip="Имя которое будет использоваться в приложении"
         className="register-form__item"
         rules={[
