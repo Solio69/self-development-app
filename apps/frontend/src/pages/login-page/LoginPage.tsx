@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useLoginMutation } from '@/shared/api'
+import { LoginValues, useLoginMutation } from '@/shared/api'
 import LoginForm from '@/features/auth/ui/login-form/LoginForm'
 import ErrorFormMessage from '@/shared/ui/error-form-message/ErrorFormMessage'
 import { PATHS } from '@/app/routes/router'
@@ -14,8 +14,7 @@ const LoginPage = () => {
   const [loginUser, loginUserResult] = useLoginMutation()
   const [error, setError] = useState('')
 
-  const login = async (values: any) => {
-    //TODO: add typing values
+  const login = async (values: LoginValues) => {
     try {
       setError('')
       await loginUser(values).unwrap()

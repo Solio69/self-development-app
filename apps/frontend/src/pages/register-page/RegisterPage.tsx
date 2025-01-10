@@ -3,7 +3,7 @@ import { PATHS } from '@/app/routes/router'
 import RegisterForm from '@/features/auth/ui/register-form/RegisterForm'
 import { useState } from 'react'
 import ErrorFormMessage from '@/shared/ui/error-form-message/ErrorFormMessage'
-import { useRegisterMutation } from '@/shared/api'
+import { RegisterValues, useRegisterMutation } from '@/shared/api'
 import { isErrorMessage } from '@/shared/lib/isErrorWithMessage'
 import { UNKNOWN_ERROR } from '@/shared/consts/errors'
 import './RegisterPage.scss'
@@ -14,8 +14,7 @@ const RegisterPage = () => {
   const [registerUser, registerUserResult] = useRegisterMutation()
   const [error, setError] = useState('')
 
-  const register = async (values: any) => {
-    //TODO: add typing values
+  const register = async (values: RegisterValues) => {
     try {
       setError('')
       await registerUser(values).unwrap()
