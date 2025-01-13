@@ -5,7 +5,7 @@ import HomePage from '@/pages/home-page'
 import LoginPage from '@/pages/login-page'
 import RegisterPage from '@/pages/register-page'
 import { useCurrentQuery } from '@/shared/api'
-import { isAuthSelector } from '@/features/auth/selectors'
+import { isAuthSelector } from '@/features/auth/authSelectors'
 import { useSelector } from 'react-redux'
 import './styles/globals.scss'
 

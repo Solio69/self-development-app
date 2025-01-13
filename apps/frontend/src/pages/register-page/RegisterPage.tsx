@@ -3,9 +3,10 @@ import { PATHS } from '@/app/routes/router'
 import RegisterForm from '@/features/auth/ui/register-form/RegisterForm'
 import { useState } from 'react'
 import ErrorFormMessage from '@/shared/ui/error-form-message/ErrorFormMessage'
-import { RegisterValues, useRegisterMutation } from '@/shared/api'
+import { useRegisterMutation } from '@/shared/api'
 import { isErrorMessage } from '@/shared/lib/isErrorWithMessage'
 import { UNKNOWN_ERROR } from '@/shared/consts/errors'
+import { RegisterValues } from '@/features/auth/authTypes'
 import './RegisterPage.scss'
 
 const RegisterPage = () => {

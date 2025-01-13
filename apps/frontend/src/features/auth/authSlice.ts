@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { authApi, UserData } from '../../shared/api'
+import { authApi } from '../../shared/api'
+import { UserData } from './authTypes'
 
 interface AuthState {
   user: (UserData & { token?: string }) | null
