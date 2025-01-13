@@ -21,8 +21,7 @@ const login = async (req, res) => {
       where: { email },
     })
 
-    const isUserCorrect =
-      user && (await bcrypt.compare(password, user.passwordHash))
+    const isUserCorrect = user && (await bcrypt.compare(password, user.passwordHash))
     const secret = process.env.JWT_SECRET_KEY
 
     if (user && isUserCorrect) {
@@ -97,7 +96,13 @@ const register = async (req, res) => {
  * @access Private
  */
 const current = (req, res) => {
-  res.status(200).json(req.user)
+  const { id, username, email } = req.user
+
+  res.status(200).json({
+    id,
+    username,
+    email,
+  })
 }
 
 module.exports = {

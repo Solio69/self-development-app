@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { User } from '@prisma/client'
 import { authApi } from '../../shared/api'
+import { UserData } from './authTypes'
 
-export interface AuthState {
-  user: (User & { token: string }) | null
+interface AuthState {
+  user: (UserData & { token?: string }) | null
   isAuth: boolean
 }
 

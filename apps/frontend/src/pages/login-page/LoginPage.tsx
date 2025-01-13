@@ -4,6 +4,7 @@ import { useLoginMutation } from '@/shared/api'
 import LoginForm from '@/features/auth/ui/login-form/LoginForm'
 import ErrorFormMessage from '@/shared/ui/error-form-message/ErrorFormMessage'
 import { PATHS } from '@/app/routes/router'
+import { LoginValues } from '@/features/auth/authTypes'
 import { isErrorMessage } from '@/shared/lib/isErrorWithMessage'
 import { UNKNOWN_ERROR } from '@/shared/consts/errors'
 import './LoginPage.scss'
@@ -12,10 +13,9 @@ const LoginPage = () => {
   const navigate = useNavigate()
 
   const [loginUser, loginUserResult] = useLoginMutation()
-
   const [error, setError] = useState('')
 
-  const login = async (values: any) => {
+  const login = async (values: LoginValues) => {
     try {
       setError('')
       await loginUser(values).unwrap()
