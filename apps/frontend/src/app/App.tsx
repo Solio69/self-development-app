@@ -4,7 +4,7 @@ import AuthChecker from './providers/AuthChecker'
 import HomePage from '@/pages/home-page'
 import LoginPage from '@/pages/login-page'
 import RegisterPage from '@/pages/register-page'
-import { useCurrentQuery } from '@/shared/api'
+import ProfilePage from '@/pages/profile-page/ProfilePage'
 import { isAuthSelector } from '@/features/auth/authSelectors'
 import { useSelector } from 'react-redux'
 import './styles/globals.scss'
@@ -29,7 +29,7 @@ function App() {
           <Route path={PATHS.notes} element={<div>notes</div>} />
           <Route path={PATHS.daySummary} element={<div>daySummary</div>} />
           <Route path={PATHS.trash} element={<div>trash</div>} />
-          <Route path={PATHS.profile} element={<div>profile</div>} />
+          <Route path={PATHS.profile} element={<ProfilePage />} />
         </Route>
       </Routes>
     </Router>
