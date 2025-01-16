@@ -26,8 +26,9 @@ const PROFILE_MODAL_DATA = {
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch()
-  const user = useSelector(userSelector)
   const navigate = useNavigate()
+
+  const user = useSelector(userSelector)
 
   const [isShowModalConfirm, setIsShowModalConfirm] = useState(false)
 
