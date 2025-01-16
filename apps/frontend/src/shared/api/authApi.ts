@@ -1,4 +1,4 @@
-import { LoginValues, RegisterValues, ResponseLoginData } from '@/features/auth/authTypes'
+import { LoginValues, RegisterValues, ResponseLoginData } from '@/features/auth/types'
 import { api } from './api'
 
 export const authApi = api.injectEndpoints({

@@ -1,0 +1,50 @@
+@import '../../shared/styles/variables.scss';
+
+.profile-page {
+  padding: 44px 18px;
+  height: 100vh;
+
+  .profile-header {
+    background-color: $green-4;
+    padding: 15px 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+    &__content {
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      color: $grey-4;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+
+  .profile-links {
+    margin-top: 12px;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: $white;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      padding: 8px;
+      margin-right: 8px;
+      width: 100%;
+      font-size: 18px;
+
+      span {
+        margin-right: 8px;
+      }
+
+      &:hover {
+        color: $green-4;
+        transition: 0.5s;
+      }
+    }
+  }
+}

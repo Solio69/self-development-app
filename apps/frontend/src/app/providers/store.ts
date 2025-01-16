@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
-import auth from '../../features/auth/authSlice'
+import auth from '../../features/auth/slice'
 import { api } from '../../shared/api'
 import { authListener } from '../middleware/authListener'
 
