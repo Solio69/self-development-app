@@ -6,7 +6,7 @@ import ErrorFormMessage from '@/shared/ui/error-form-message/ErrorFormMessage'
 import { useRegisterMutation } from '@/shared/api'
 import { isErrorMessage } from '@/shared/lib/isErrorWithMessage'
 import { UNKNOWN_ERROR } from '@/shared/consts/errors'
-import { RegisterValues } from '@/features/auth/authTypes'
+import { RegisterValues } from '@/features/auth/types'
 import './RegisterPage.scss'
 
 const RegisterPage = () => {

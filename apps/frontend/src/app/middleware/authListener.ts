@@ -1,4 +1,5 @@
 import { authApi } from '@/shared/api'
+import { LOCAL_STORAGE_TOKEN_KEY } from '@/features/auth/constants'
 import { createListenerMiddleware, isAnyOf } from '@reduxjs/toolkit'
 
 export const authListener = createListenerMiddleware()
@@ -10,7 +11,7 @@ authListener.startListening({
     listenerApi.cancelActiveListeners()
 
     if (action.payload.token) {
-      localStorage.setItem('token', action.payload.token)
+      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, action.payload.token)
     }
   },
 })
